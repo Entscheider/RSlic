@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>superpi.png</file>
+    </qresource>
+</RCC>

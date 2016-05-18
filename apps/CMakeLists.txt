@@ -1,0 +1,6 @@
+add_subdirectory(SimpleTest)
+add_subdirectory(3DTest)
+option(GUI "Compile GUI" ON)
+IF(${GUI})
+  add_subdirectory(SuperPixelGui)
+ENDIF()
