@@ -11,6 +11,8 @@
 #include <functional>
 #include <stdexcept>
 
+#include <stddef.h>
+
 //https://github.com/progschj/ThreadPool
 class ThreadPool {
 	public:

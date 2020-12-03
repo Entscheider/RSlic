@@ -106,7 +106,7 @@ namespace RSlic {
 	   Mat_<ClusterInt> label;
 	   Mat_<double> dist;
 
-	   iterateCommonRes(const cv::Mat::MSize &size) : label(3, size, -1), dist(3, size, DINF) {
+	   iterateCommonRes(const cv::MatSize &size) : label(3, size, -1), dist(3, size, DINF) {
 	   }
 
 	   inline double &distAt(int y, int x, int t) {
@@ -128,7 +128,7 @@ namespace RSlic {
 }
 namespace {
  template<typename F>
- inline RSlic::Voxel::priv::iterateCommonResP iterateCommonIteration(F f, int beg, int end, const cv::Mat::MSize &size, const vector<Vec3i> &centers, int s, ThreadPoolP pool) {
+ inline RSlic::Voxel::priv::iterateCommonResP iterateCommonIteration(F f, int beg, int end, const cv::MatSize &size, const vector<Vec3i> &centers, int s, ThreadPoolP pool) {
 	 RSlic::Voxel::priv::iterateCommonResP result(new RSlic::Voxel::priv::iterateCommonRes(size));
 	 const int w = size[1];
 	 const int h = size[0];

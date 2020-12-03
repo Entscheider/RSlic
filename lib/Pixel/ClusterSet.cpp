@@ -1,4 +1,4 @@
-#include "clusterset.h"
+#include "ClusterSet.h"
 #include "../priv/Useful.h"
 
 using namespace RSlic::Pixel;

@@ -46,7 +46,7 @@ void WorkerObject::work(cv::Mat m, SlicSetting *settings, QWidget* tabwdg) {
 	int step = sqrt(m.cols * m.rows / settings->count);
 	auto grad = RSlic::Pixel::buildGrad(m);
 	emit message(tr("Initializing Slic ..."));
-	auto slic = RSlic::Pixel::Slic2::initialize(utils::makeLabIfNecessary(m), grad, step, settings->stiffness, pool);
+	auto slic = RSlic::Pixel::Slic2::initialize(::utils::makeLabIfNecessary(m), grad, step, settings->stiffness, pool);
 	if (slic.get() == nullptr) {
 		emit failed(tr("Wrong Parameter"), tr("No Superpixel can be build. May you should play with the parameters"));
 		return;
@@ -124,7 +124,7 @@ MainWindow::MainWindow(QWidget *parent) :
 		colorClusterAction->setChecked(true);
 		connect(colorClusterAction, SIGNAL(triggered(bool)), SLOT(setClusterFill(bool)));
 		viewbar->addAction(colorClusterAction);
-		drawContourAction = new QAction("Draw", this);
+		drawContourAction = new QAction("Draw Edges", this);
 		drawContourAction->setCheckable(true);
 		colorClusterAction->setChecked(true);
 		connect(drawContourAction, SIGNAL(triggered(bool)), SLOT(setClusterContour(bool)));

@@ -1,9 +1,9 @@
 # Overview
-RSlic is a library written in C++ for computing Superpixel and Supervoxel using OpenCV. It based on the Slic-Algorithmus (http://ivrg.epfl.ch/research/superpixels).
+RSlic is a C++ library to compute Superpixels and Supervoxel and is based on OpenCV. It implements the [Slic-Algorithmus](https://web.archive.org/web/20170608065725/http://ivrl.epfl.ch/research/superpixels).
 
 # Features
-- Compute Superpixel and Supervoxel
-- Support for the zero parameter version of the SLIC algorithm (SLICO)
+- Compute Superpixel (2D) and Supervoxel (3D)
+- Support for the zero parameter version of the SLIC algorithm named SLICO
 - Support for custom metrics
 - Ability to save any iteration while computing (e.g. SuperPixelGUI makes use of it)
 
@@ -38,10 +38,10 @@ add_executable(myproj main.cpp ...)
 target_link_libraries(myproj ${RSLIC_LIB})
 ```
 
-By the way: Your project will (and have to) use C++11 now.
+By doing this, your project will (and have to) use C++11.
 
 ## Including the files
-If you would like to use Superpixel the simplest way would be to import RSlic/RSlic2H.h:
+If you like to use Superpixel, the simplest way would be to import RSlic/RSlic2H.h:
 
 ```cpp
 #include <RSlic/RSlic2H.h>
@@ -55,7 +55,7 @@ and if you want to use Supervoxel:
 Of course you can use Superpixel and Supervoxel at the same time.
 
 ## Simple introduction RSlic
-Executing the Slic-Algorithmus is very simple. Let's say you have a gray image img, want n Superpixel with a special stiffness. Then:
+Executing the Slic-Algorithmus is very simple. Let's say you have a gray image `img` wnr want `n` Superpixel with a special stiffness. Then your code should look like:
 
 ```cpp
 #include <RSlic/RSlic2H.h>
@@ -73,8 +73,8 @@ for (int i=0; i < 10; i++){ //Do 10 Iterations
 slic = slic->finalize<distanceGray>();
 ```
 
-Now you can work with *slic*. Mainly you want to use
-*slic->getClusters()*. See the documentation for more details.
+Now you can work with `slic`. Mainly you want to use
+`slic->getClusters()`. See the documentation for more details.
 
 You're not sure if you have a gray image or a colorful one?
 
@@ -105,11 +105,11 @@ Slic2P slic = shutUpAndTakeMyMoney(img, n, hardness, false, 10);
 //Slic2P slic = shutUpAndTakeMyMoney(img, n, hardness, true, 10);
 ```
 
-Note that Slic is often intended to be applied on top of LAB images. So you may want to convert your image before using the functions above. (Use OpenCV for this)
+Note that Slic is often intended to be applied on LAB images. So you may want to convert your image before using the functions above with, for instance, OpenCV.
 
 # 3rd Party Code
 This library uses the ThreaPool file from https://github.com/progschj/ThreadPool. 
 The RSlic library uses threads if 'PARALLEL' is enabled in CMakeCache.
 
 # License
-BSD license
+This code is licensed under BSD-3 license

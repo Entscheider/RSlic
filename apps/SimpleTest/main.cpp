@@ -132,7 +132,7 @@ int main(int argc, char **argv) {
 
 	auto img = cv::imread(settings->filename, cv::IMREAD_UNCHANGED);
 	if (img.type() == CV_8UC4) {
-		cv::cvtColor(img, img, CV_BGRA2BGR);
+		cv::cvtColor(img, img, cv::COLOR_BGRA2BGR);
 	}
 	auto grad = buildGrad(img); 
 
@@ -146,7 +146,7 @@ int main(int argc, char **argv) {
 
 	switch (img.type()) {
 		case CV_8UC3:
-			cvtColor(img, img_lab, CV_BGR2Lab); // See paper
+			cvtColor(img, img_lab, cv::COLOR_BGR2Lab); // See paper
 			slic = Slic2::initialize(img_lab, grad,  s, settings->stiffness, pool);
 			break;
 		case CV_8UC1:

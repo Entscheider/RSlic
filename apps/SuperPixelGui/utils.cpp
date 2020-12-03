@@ -68,7 +68,7 @@ namespace {
 		 case QImage::Format_RGB888: {
 			 cv::Mat result = Policy::start(img, CV_8UC3);
 			 if (swap) {
-				 cv::cvtColor(result, result, CV_RGB2BGR);
+				 cv::cvtColor(result, result, cv::COLOR_RGB2BGR);
 			 }
 			 return result;
 		 }
@@ -133,7 +133,7 @@ namespace {
 
 			 case CV_8UC3 : {
 				 if (swap) {
-					 cv::cvtColor(mat, mat, CV_BGR2RGB);
+					 cv::cvtColor(mat, mat, cv::COLOR_BGR2RGB);
 				 }
 
 				 return mat_to_qimage_ref_policy(mat, QImage::Format_RGB888);
@@ -180,26 +180,11 @@ QImage utils::mat2QImage(const cv::Mat &src) {
 	return mat_to_qimage_cpy(src, true);
 }
 
-/*
-cv::Mat utils::qImage2Mat(const QImage &img)
-{
-    return cv::Mat(img.height(), img.width(), CV_8UC3,
-                  const_cast<uchar*>(img.bits()),
-                  img.bytesPerLine()).clone();
-}
 
-QImage utils::mat2QImage(const cv::Mat & src){
-    //cv::Mat temp;
-    //cv::cvtColor(src, temp,CV_BGR2RGB);
-    QImage dest((const uchar *) src.data, src.cols, src.rows, src.step, QImage::Format_RGB888);
-    dest.bits();
-    return dest.rgbSwapped();
-}
-*/
 cv::Mat utils::makeLabIfNecessary(const cv::Mat &m) {
 	cv::Mat res;
 	if (m.type() == CV_8UC3) {
-		cv::cvtColor(m, res, CV_BGR2Lab);
+		cv::cvtColor(m, res, cv::COLOR_BGR2Lab);
 	} else
 		res = m;
 	return res;
