@@ -7,6 +7,15 @@ RSlic is a C++ library to compute Superpixels and Supervoxel and is based on Ope
 - Support for custom metrics
 - Ability to save any iteration while computing (e.g. SuperPixelGUI makes use of it)
 
+# Screenshot
+
+This project includes a few sample application. The following image is a screenshot from the SuperPixelGui, a graphical user interface for viewing and displaying SLIC results.
+
+![](https://raw.githubusercontent.com/Entscheider/RSlic/master/img/superpixelgui.jpg)
+
+*This screenshot includes an image created by the (CC) Blender Foundation | [gooseberry.blender.org](https://gooseberry.blender.org/)*
+
+
 # Dependency
 To build RSlic you need:
 - OpenCV
